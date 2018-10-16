@@ -1,0 +1,70 @@
+package main
+
+import "fmt"
+
+//写三个函数，给定一个[]Score，找出:分数大于59的，找出某个特定班级的，找出名字长度超过10的
+
+type score struct {
+	ID     int
+	Class  string
+	Name   string
+	course string
+	Score  int
+}
+
+const (
+	pass         = 59
+	length       = 10
+	certainClass = "C1"
+)
+
+var scores = []score{
+	{1, "C1", "Tom", "English", 85},
+	{2, "C2", "Jack", "English", 46},
+	{3, "C1", "Peter", "English", 78},
+	{4, "C2", "Feliacianna", "English", 68},
+}
+
+func main() {
+
+	a := getPassScores(scores,pass)
+	
+	b := getLengthName(scores,length)
+	
+	c := getSpecificClass(scores,certainClass)
+	fmt.Printf("%v\n%v\n%v\n",a,b,c)
+
+}
+
+func getPassScores(scoreInputs []score,question int) []score {
+	var passScore []score
+
+	for _, score := range scoreInputs {
+		if score.Score > question {
+			passScore = append(passScore, score)
+		}
+	}
+	return passScore
+
+}
+func getLengthName(scoreInputs []score,question int) []score {
+	var LengthName []score
+	
+	for _, score := range scoreInputs {
+		if len(score.Name) > question {
+			LengthName = append(LengthName, score)
+		}
+	}
+	return LengthName
+}
+
+func getSpecificClass(scoreInputs []score,question string) []score {
+	var specificClass []score
+	
+	for _, score := range scoreInputs {
+		if score.Class == question {
+			specificClass = append(specificClass, score)
+		}
+	}
+	return specificClass
+}
