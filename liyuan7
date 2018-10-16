@@ -1,0 +1,61 @@
+package main
+
+import "fmt"
+
+//写三个函数，给定一个[]Score，找出:分数大于59的，找出某个特定班级的，找出名字长度超过10的
+
+type score struct {
+	ID    int
+	Class string
+	Name  string
+	Score int
+}
+
+var scores = []score{
+	{1, "C1", "Tom", 85},
+	{2, "C2", "Jack", 46},
+	{3, "C1", "Peter", 78},
+	{4, "C2", "Feliacianna", 68},
+}
+
+func main() {
+
+	a := getPassScores(scores)
+	fmt.Println(a)
+	b := getLongName(scores)
+	fmt.Println(b)
+	c := getSpecificClass(scores)
+	fmt.Println(c)
+}
+
+func getPassScores(scoreInputs []score) []score {
+	var passScore []score
+
+	for _, score := range scoreInputs {
+		if score.Score > 59 {
+			passScore = append(passScore, score)
+		}
+	}
+	return passScore
+}
+func getLongName(scoreInputs []score) []score {
+	var longName []score
+
+	for _, score := range scoreInputs {
+		if len(score.Name) > 10 {
+			longName = append(longName, score)
+		}
+	}
+	return longName
+}
+
+func getSpecificClass(scoreInputs []score) []score {
+	var specificClass []score
+
+	for _, score := range scoreInputs {
+		if score.Class == "C1" {
+			specificClass = append(specificClass, score)
+		}
+	}
+	return specificClass
+}
