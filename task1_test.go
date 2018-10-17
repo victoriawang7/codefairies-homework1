@@ -2,7 +2,6 @@ package main
 
 import (
 	"testing"
-	
 )
 
 func TestGetPassScores(t *testing.T) {
@@ -14,7 +13,7 @@ func TestGetPassScores(t *testing.T) {
 	}
 }
 func TestGetLengthName(t *testing.T) {
-	outputs := getLengthNames(scores, pass)
+	outputs := getLengthName(scores, length)
 	for _, output := range outputs {
 		if len(output.Name) != 11 {
 			t.Error("TestgetLengthName failed")
@@ -23,9 +22,9 @@ func TestGetLengthName(t *testing.T) {
 }
 
 func TestGetSpecificClass(t *testing.T) {
-	outputs := getLengthNames(scores, pass)
+	outputs := getSpecificClass(scores, certainClass)
 	for _, output := range outputs {
-		if len(output.Class) != "C1" {
+		if output.Class != "C1" {
 			t.Error("TestgetSpecificClass failed")
 		}
 	}
