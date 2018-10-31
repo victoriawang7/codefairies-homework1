@@ -54,4 +54,5 @@ func printContent3(str string, str1 string, index int) {
 func printEnd() {
 	fmt.Printf("There was an old lady who swallowed a horse...")
 	fmt.Printf("...She's dead, of course!")
+	fmt.Printf("")
 }
